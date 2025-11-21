@@ -1,6 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Hola Mundo desde VJS"/>
+  <HelloWorld msg="Hola Mundo desde VJS Dylan Lema y Jhonny Ninabanda"/>
 </template>
 
 <script>
