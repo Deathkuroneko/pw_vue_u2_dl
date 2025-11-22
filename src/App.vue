@@ -1,26 +1,18 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Hola Mundo desde VJS Dylan Lema y Jhonny Ninabanda"/>
+  <div>
+    <h2>Dylan Lema y Jhonny</h2>
+    <ContadorView />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import ContadorView from "../src/views/ContadorView.vue";
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    ContadorView,
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
