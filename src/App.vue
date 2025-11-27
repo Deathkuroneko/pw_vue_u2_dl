@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <ContadorView/>
-    <Contador/>
-    <Contador/>
+    <Contador titulo2="Contador UCE" v-bind:inicio="20" :mostrar="true"/>
+    <Contador titulo2="Contador PW" :inicio="4" :mostrar="false"/>
   </div>
 </template>
  
