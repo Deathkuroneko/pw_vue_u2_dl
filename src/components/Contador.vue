@@ -80,7 +80,8 @@ export default {
 <style>
 
 #incrementar{
-    display: flexbox;   
+    display: flex; 
+    justify-content: center; 
 }
 
 .boton {
