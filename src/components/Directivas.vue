@@ -12,11 +12,7 @@
     <h1>{{ arreglo }}</h1>
 
     <ul>
-      <li
-        v-show="nombre !== null"
-        v-for="{ nombre, apellido } in arreglo"
-        :key="nombre"
-      >
+      <li v-show="nombre !== null" v-for="{ nombre, apellido } in arreglo" :key="nombre">
         {{ nombre }}
         {{ apellido }}
       </li>
@@ -44,6 +40,20 @@
     <button v-on:click="imprimirNombreApellido()">Imprimir nombre</button>
     <button v-on:click="agregarEstudiante()">Imprimir Estudainte</button>
     <button v-on:click="limpiarFormulario()">Limpiar</button>
+    <h1>{{ arreglo }}</h1>
+    <hr/>
+    <label for="id_nombre_1">Nombre</label>
+    <input v-model="nombre" id="id_nombre_1" type="text">
+    <label for="id_apellido_1">Apellido</label>
+    <!--Los modificadores de eventos modificadores de eventos que existen
+    https://vuejs.org/guide/essentials/event-handling.html#key-modifiers -->
+    <input v-model="apellido" v-on:keypress.space="agregarEstudiante1" id="id_apellido_1" type="text">
+    <ul>
+      <li v-show="nombre" v-for="{ nombre, apellido } in arreglo" :key="nombre" >
+        {{ nombre }} + {{ apellido }}
+      </li>
+    </ul>
+    <h2>Tabla</h2>
   </div>
 </template>
 
@@ -65,6 +75,19 @@ export default {
         nombre: this.nombre,
         apellido: this.apellido,
       };
+      console.log("Agregar estudiante");
+      console.log(stu);
+      this.arreglo.push(stu);
+    },
+    agregarEstudiante1(event) {
+      console.log('ahora');
+      const stu = {
+        nombre: this.nombre,
+        apellido: this.apellido,
+      };
+      if(event.charCode !== 32 ){
+        return;
+      }
       console.log("Agregar estudiante");
       console.log(stu);
       this.arreglo.push(stu);
