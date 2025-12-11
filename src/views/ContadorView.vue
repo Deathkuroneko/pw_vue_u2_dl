@@ -8,7 +8,7 @@
 export default {};
 </script>
  
-<style>
+<style scoped>
 h2 {
   color: rgb(51, 51, 102);
   text-align: center;

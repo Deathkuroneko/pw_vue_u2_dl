@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    
-    <DirectivasView/>
+    <PreguntaView/>
+
+    <!-- <DirectivasView/> -->
 
     <!--
     <ContadorView/>
@@ -15,13 +16,15 @@
 import ContadorView from '../src/views/ContadorView.vue';
 import Contador from '../src/components/Contador.vue';
 import DirectivasView from '../src/views/DirectivasView.vue';
+import PreguntaView from '../src/views/PreguntaView.vue'
 export default {
   name: 'App',
   components: {
     ContadorView,
     Contador,
     DirectivasView,
-  }
+    PreguntaView,
+  },
  
 };
 </script>
