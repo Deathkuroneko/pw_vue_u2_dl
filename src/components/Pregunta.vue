@@ -1,25 +1,54 @@
 <template>
     <div>
-        <img src="https://yesno.wtf/assets/yes/5-64c2804cc48057b94fd0b3eaf323d92c.gif" alt="No se peude">
+        <img v-if="imagen" :src="imagen" alt="No se peude">
         <br>
+        <div class="oscuro"></div>
         <div class="pregunta-container">
 
-            <input type="text" placeholder="Hazme una pregunta">
+            <input v-model="pregunta" type="text" placeholder="Hazme una pregunta">
 
             
             <p>Recuerda terminar con una interrogacion</p>
 
-            <h2 id="titulo">¿Sere millonario?</h2>
-            <h1>Yes, No</h1>
+            <h2>{{ pregunta }}</h2>
+            <h1>{{ respuesta }}</h1>
+
         </div>
 
     </div>
 </template>
 
 <script>
+import {consumirAPIFacade} from '../clients/YesNoClient.js';
 export default{
+        data(){
+            return{
+                pregunta: null,
+                respuesta: null,
+            };
+        },
+        watch:{
+            pregunta(values, oldValue){
+                if(values.includes('?')){
+                    //llamar al API
+                    this.respuesta='Pensando....'
+                this.consumir();
+                }
+            },
+        },
+        methods:{
+            async consumir(){
+                const resp= await consumirAPIFacade();
+                
+                    console.log("Respuesta final");
+                    console.log(resp);
+                    console.log(resp.answer);
+                    this.respuesta = resp.answer;
+                    this.imagen = resp.image;
+            }
 
-}
+        }
+};
 </script>
 
 <style>
@@ -29,7 +58,7 @@ export default{
     justify-content: center;
     justify-items: center;
 }*/
-img{
+img, .oscuro{
     height: 100hv;
     width: 100vw;
     max-height: 100%;
@@ -38,6 +67,10 @@ img{
     left: 0px;
     top: 0px;
 
+}
+
+,oscuro{
+    background: rgba(0,0,0 , 0.4);
 }
 
 .pregunta-container {
@@ -71,4 +104,5 @@ p{
 h2{
     margin-top: 150px;
 }
+
 </style>
