@@ -24,12 +24,12 @@
         <th>Nombre</th>
         <th>Apellido</th>
       </tr>
-      <!-- Segunda forma llamando directo desde el objeto
+      <!-- Segunda forma llamando directo desde el objeto -->
       <tr v-for="Estudiante in arreglo" :key="Estudiante">
         <td v-show="nombre !== null">{{ Estudiante.nombre }}</td>
         <td v-show="apellido !== null">{{ Estudiante.apellido }}</td>
       </tr>
-      -->
+      
       <tr v-for="{ nombre, apellido } in arreglo" :key="nombre">
         <td class="caja" v-show="nombre !== null">{{ nombre }}</td>
         <td class="caja" v-show="apellido !== null">{{ apellido }}</td>
