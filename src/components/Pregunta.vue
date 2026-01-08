@@ -51,7 +51,7 @@ export default{
 };
 </script>
 
-<style>
+<style scoped>
 
 /*div {
     display: row;
@@ -69,7 +69,7 @@ img, .oscuro{
 
 }
 
-,oscuro{
+.oscuro{
     background: rgba(0,0,0 , 0.4);
 }
 
