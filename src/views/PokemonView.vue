@@ -1,10 +1,11 @@
 <template>
     <div>
-        <PokemonImagen :pokemonId="pokemonGanador" />
+        <PokemonImagen v-if="mostratComponente" :pokemonId="pokemonGanador" />
         <PokemonOpciones @seleccionado="evaluarGanador($event)" :listaPokemons="pokemonArr"/>
         <div class="resul">
           <p>{{ resultado }}</p>
         </div>
+        <button v-if="mostratComponente" @click="destruir()">Destruir</button>
         
     </div>
 </template>
@@ -21,16 +22,64 @@ export default {
   data() {
     return {
       pokemonArr: [],
-      pokemonGanador: null,
+      pokemonGanador: 0,
       resultado: '',
+      mostratComponente: true,
     };
   },
-  // mounted es un hook del ciclo de vida del componente
+  /*Existen fases del ciclos de vida de componentes:
+  before create, created, before mount, mounted, before update, updated, before destroy, destroyed */
+
+  // beforeCreate sirve para ejecutar codigo  justo  antes de que se cree el componente
+  beforeCreate() {
+    console.log('beforeCreate: apenas inicia la instanciacion del componente');
+  },
+  // created sirve para ejecutar codigo una vez que se ha creado el componente
+  created() {
+    console.log('created: ya se resolvieron data, computed y watchers ahi se ejecuta');
+  },
+  // Montaje en vue es cuando se renderiza o visualiza el componente en el DOM( Document Object Model )
+  // beforeMount sirve para ejecutar codigo justo antes de que se monte el componente en el DOM
+  beforeMount() {
+    console.log('beforeMount: justo antes de montarse en el DOM, justo antes del primer render de un elemento HTML');
+  },
+  // mounted sirve para ejecutar codigo una vez que el componente ha sido montado en el DOM
   mounted() {
-    console.log('Componente montado');
+    console.log('Componente montado: ya se renderizo en el DOM, ya se renderizo el componente');
     this.iniciarJuego();
   },
+  // Actualizacion en vue es cuando hay un cambio en el estado del componente y se vuelve a renderizar
+  // beforeUpdate sirve para ejecutar codigo justo antes de que el componente se actualice en el DOM
+  beforeUpdate() {
+    console.log('beforeUpdate: se ejecuta cuando hay un cambio en el estado del componente, justo antes de que se vuelva a renderizar');
+  },
+  // updated sirve para ejecutar codigo una vez que el componente ha sido actualizado en el DOM
+  updated() {
+    console.log('updated: ya se actualizo en el DOM, ya se volvio a renderizar el componente, ya se actualizo la re-renderizacion');
+  },
+  // Destruccion en vue es cuando el componente se elimina del DOM
+  // beforeDestroy sirve para ejecutar codigo justo antes de que el componente sea destruido
+  beforeDestroy() {
+    console.log('beforeDestroy: justo antes de que el componente sea destruido, se usa para limpiar recursos o cancelar suscripciones');
+  },
+  // destroyed sirve para ejecutar codigo una vez que el componente ha sido destruido
+  destroyed() {
+    console.log('destroyed: ya se destruyo el componente, ya no esta en el DOM');
+  },
+  // desmontaje en vue es cuando el componente se elimina del DOM
+  // beforeUnmount sirve para ejecutar codigo justo antes de que el componente sea desmontado
+  beforeUnmount() {
+    console.log('beforeUnmount: justo antes de que el componente sea desmontado del DOM');
+  },
+  // unmounted sirve para ejecutar codigo una vez que el componente ha sido desmontado
+  unmounted() {
+    console.log('unmounted: ya se desmonto el componente, ya no esta en el DOM');
+  },
+
   methods: {
+    destruir() {
+      this.mostratComponente = false;
+    },
     async iniciarJuego() {
     this.pokemonArr = await obtenerVectorPokemonFacade();
 
