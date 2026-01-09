@@ -29,11 +29,10 @@ export default {
     img {
         position: relative;
         height: 200px;
-        right: -46.5%;
+        right: -42%;
     }   
     .pokemon-container {
         height: 200px;
-
     }   
 
 

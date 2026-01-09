@@ -40,14 +40,28 @@ const obtenerVectorAleatorio = () => {
 }
 
 // labmda para obtener un vectorpokemon
-const obtenerVectorPokemon = (obtenerVectorAleatorio) => {
-    const data1 = consumirAPI(obtenerVectorAleatorio[0]);
-    const data2 = consumirAPI(obtenerVectorAleatorio[1]);
-    const data3 = consumirAPI(obtenerVectorAleatorio[2]);
-    const data4 = consumirAPI(obtenerVectorAleatorio[3]);
+const obtenerVectorPokemon = async (obtenerVectorAleatorio) => {
+    const data1 = await consumirAPI(obtenerVectorAleatorio[0]);
+    const data2 = await consumirAPI(obtenerVectorAleatorio[1]);
+    const data3 = await consumirAPI(obtenerVectorAleatorio[2]);
+    const data4 = await consumirAPI(obtenerVectorAleatorio[3]);
 
     const obj1 = { nombre: data1.name, id: data1.id };
     const obj2 = { nombre: data2.name, id: data2.id };
     const obj3 = { nombre: data3.name, id: data3.id };
     const obj4 = { nombre: data4.name, id: data4.id };
+
+    return [obj1, obj2, obj3, obj4];
+}
+
+// funciones facade
+
+export async function obtenerVectorPokemonFacade() {
+    const vectorAleatorio = obtenerVectorAleatorio();
+    return await obtenerVectorPokemon(vectorAleatorio);
+}
+
+//para el aleatorio
+export function obtenerAleatorioFacade(min, max) {
+    return obtenerAleatorio(min, max);
 }
