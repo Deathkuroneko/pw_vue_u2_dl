@@ -45,10 +45,11 @@ export default {
 
         if (idSeleccionado === this.pokemonGanador) {
           console.log('¡Correcto! Has seleccionado el Pokémon ganador.');
-            this.resultado = '¡Correcto! Has seleccionado el Pokémon ganador.';
+          // como agrego el nombre del pokemon ganador al mensaje?
+            this.resultado = `¡Correcto! Has seleccionado el Pokémon ganador es ¡ ${this.pokemonArr.find(p => p.id === this.pokemonGanador)?.nombre} !` ;
         } else {
           console.log('Incorrecto. Inténtalo de nuevo.');
-            this.resultado = 'Incorrecto. Inténtalo de nuevo.';
+            this.resultado = `Incorrecto era ${this.pokemonArr.find(p => p.id === this.pokemonGanador)?.nombre}. Inténtalo de nuevo.`;
         }
         this.iniciarJuego();
     },
